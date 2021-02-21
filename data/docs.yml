@@ -76,6 +76,11 @@
       description: A lightweight collector/sidecar could be deployed closing to the target monitored system, to collect metrics, traces, and logs.
       user: apache
       repo: skywalking-satellite
+      repoUrl: https://github.com/EvanLjp/skywalking-satellite.git
+      docs:
+        - version: 0.1.0
+          link: /docs/satellite/latest/readme/
+          commitId: 8bb4a1e92d8229308c38258f886d4e63db1694e2
 
 
 - type: Operation
