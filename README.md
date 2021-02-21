@@ -1,71 +1,96 @@
 # Apache SkyWalking Website
 
-This is the repository including all source codes of `http://skywalking.apache.org`.
+This is the repository including all source codes of `https://skywalking.apache.org`.
 
-## Compile, preview and generate static files
+## Preview and generate static files
 
-Usage:
+This site was compiled using [Hugo](https://gohugo.io).
 
-1. Git pull branch `master`
-2. You may need to run `npm install` before your start somehow.
-3. Run `npm run clean` to remove dist folder
-4. Run `npm run dev` in your local env, open `http://localhost:8080` in browser, check whether it works fine
-6. Push files and send pull request if necessary, with screenshots showing how you would change.
+1. Install hugo
+2. Run `npm install` to install the required libraries.
+3. Pull this repo into your local environment, and run `hugo server` at the root folder, you can see the site preview from http://localhost:1313
+4. To generate the static website, run `npm run build` for the whole website. Run `npm run build-with-docs` if you want to build the project documentations.
 
+## Contributing
 
-## How to add document in the site
+This guide will guide you on how to contribute to the site.
 
+This site uses [Hugo](https://gohugo.io) to organize and manage content with the following sections are available:
 
-```
-|-- docs                    // English version
-|   |-- README.md           // homepage's markdown
-|   |-- .vuepress
-|   |   |-- config.js       // website config
-|   |   |-- public          // public resources
-|   |   |   |-- assets          // website static resources
-|   |   |   |-- static          // markdown resources
-|   |   |   |   |-- blog          // blog  markdown resources
-|   |   |-- theme           // vue theme project
-|   |-- blog
-|   |   |-- xxx.md          // other blog markdowns
-|   |   |-- README.md       // blog's markdown
-|   |-- downloads
-|   |   |-- README.md       // downloads's markdown
-|   |-- events
-|   |   |-- README.md       // events's markdown
-|   |-- team
-|   |   |-- README.md       // team's markdown
-|   |-- zh                  // Chinese version
-|   |   |-- README.md       // homepage's markdown
-|   |   |-- blog
-|   |   |   |-- xxx.md      // other blog markdowns
-|   |   |   |-- README.md   // blog's markdown
-|   |   |-- downloads
-|   |   |   |-- README.md   // downloads's markdown
-|   |   |-- events
-|   |   |   |-- README.md   // events's markdown
-|   |   |-- team
-|   |   |   |-- README.md   // team's markdown
+### Homepage
 
+Located at `content/_index.html`。
+
+### Projects and Document
+
+The data of documentation link is located in `data/docs.yml` and formated as `YAML`.
+
+### Event
+
+Located at `content/blog`. If you don't want to create a new blog, you need to create a new subdirectory under this directory. Here is a sample blog below.
+
+```yaml
+---
+title: This is a title
+date: 2020-04-28
+author: Author
+description: This is description.
+---
+
+Content
 ```
 
-## How to add and manage images in the site
-You can put your markdown images in the path ``` /docs/.vuepress/public/static/ ``` and use the folder to separate the site parts. 
+### Blog
 
-Such as adding a ```blog``` folder in ``` /docs/.vuepress/public/static/ ```,and then you can make a folder which names about your blog in it. Put the images in this named folder.
+Located at `content/blog`. If you don't want to create a new blog, you need to create a new subdirectory under this directory. Here is a sample blog below.
 
-In markdown, you can use ```/docs/.vuepress/public/static/blog/{blogName}/{imageName} ``` path to add the image into markdown doc.
+```yaml
+---
+title: This is a title
+date: 2020-04-28
+author: Author
+description: This is description.
+---
 
-## How to add a new committer
-You can refer to the previous [PR](https://github.com/apache/skywalking-website/pull/116/files), there are six files you need to modify:
-1. `/docs/README.md`, remove the oldest one to only keep 4 pieces of news, and the date is the date you received the invitation email.
-2. `/docs/events/README.md`
-3. `/docs/team/README.md`, names should be in the alphabet order.
-4. `docs/zh/README.md`, remove the oldest one to only keep 4 pieces of news.
-5. `docs/zh/events/README.md`
-6. `docs/zh/team/README.md`, names should be in the alphabet order.
+Content
+```
 
-If you don't know Chinese, you can only update the English documents.
+### Downloads
 
-## Blog
-When you try to publish blogs in Apache SkyWalking official website, no advertising is allowed here. You could add markdown test link(`[name](url)`) pointing to you personal website/twitter and company website.
+The data of release is located in `data/releases.yml` and formated as `YAML`.
+The data of docker image is located in `data/dockerImages.yml` and formated as `YAML`.
+
+### Team
+
+This is a single page located at `content/team/_index.md`.
+
+### 中文博客
+
+Located at `content/zh`. If you don't want to create a new blog, you need to create a new subdirectory under this directory. Here is a sample blog below.
+
+```yaml
+---
+title: 博客标题
+date: 2020-04-28
+author: 作者姓名
+description: 博客摘要
+---
+
+博客正文。
+```
+
+### User Wall
+
+All user information are in `/data/homepage.yml`. Users are encouraged to add themselves to this page.
+
+### Links
+
+Configure in the `config.toml` file. 
+
+### Website Configuration
+
+The website configuration file located at `config.toml`.
+
+### Images
+
+The images within the blogs, events and 中文博客 should keep at the same folder as the blog file, and you should reference that with the relative path.
